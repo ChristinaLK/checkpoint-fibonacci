@@ -1,0 +1,16 @@
+executable 	= fibonacci.py
+
+transfer_checkpoint_files = fibonacci.checkpoint, _condor_stdout
+checkpoint_exit_code      = 85
+when_to_transfer_output   = ON_EXIT
+
+Output          = fibonacci.stdout
+Log  		= logs/fib.log
+Error 	 	= logs/fib.error
+
+request_cpus 	= 1
+request_memory 	= 1GB
+request_disk 	= 1GB
+Requirements 	= (OSGVO_OS_STRING == "RHEL 7") && (OpSys == "LINUX")
+
+queue 1
